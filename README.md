@@ -48,7 +48,7 @@ process.env.PUBLIC_IP //=> "255.255.0.1"
 >### <a name="add"></a>add(key, value)
 Adds the key and its value to (dotenv and node) environment.
 Can also be used to update as it overwrites existing variables
-```
+```javascript
 const dotenvM = require('dotenv-manipulator')
 dotenvM.add('node_env', 'prod')
 dotenvM.add('hostname', 'DOLPHIN')
@@ -88,6 +88,6 @@ process.env.HOSTNAME //=> undefined
 Just a convenient alias, act the same as [add()](#add)
 ```javascript
 const dotenvM = require('dotenv-manipulator')
-dotenvM.del('hostname')
-process.env.HOSTNAME //=> undefined
+dotenvM.update('node_env', 'prod')
+process.env.NODE_ENV //=> 'prod'
 ```
