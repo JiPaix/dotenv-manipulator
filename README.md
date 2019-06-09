@@ -5,7 +5,7 @@
 npm i -S dotenv-manipulator
 ```
 ## Usage
-```
+```javascript
 const dotenvM = require('dotenv-manipulator')
 
 dotenvM.add('public_ip', '255.255.0.1')
@@ -22,10 +22,10 @@ NODE_ENV=development
 TEMPORARY_DATA=data to delete after (x)
 ```
 **process.env :**
-```
-process.env.NODE_ENV // returns "development"
-process.env.TEMPORARY_DATA // returns "data to delete after (x)"
-process.env.PUBLIC_IP // returns undefined
+```javascript
+process.env.NODE_ENV //=> "development"
+process.env.TEMPORARY_DATA //=> "data to delete after (x)"
+process.env.PUBLIC_IP //=> undefined
 ```
 ### AFTER
 
@@ -38,10 +38,10 @@ PUBLIC_IP=255.255.0.1
 
 
 **Environment variable *after* :**
-```
-process.env.NODE_ENV // returns "production"
-process.env.TEMPORARY_DATA // returns undefined
-process.env.PUBLIC_IP // returns "255.255.0.1"
+```javascript
+process.env.NODE_ENV //=> "production"
+process.env.TEMPORARY_DATA //=> undefined
+process.env.PUBLIC_IP //=> "255.255.0.1"
 ```
 ## Methods in depth
 
@@ -59,7 +59,7 @@ dotenv file content :
  `NODE_ENV=dev`
  
 node environment :
-```
+```javascript
 process.env.NODE_ENV //=> dev
 process.env.HOSTNAME //=> undefined
 ```
@@ -72,13 +72,13 @@ HOSTNAME=DOLPHIN
 NODE_ENV=development
 ```
 node environment
-```
+```javascript
 process.env.NODE_ENV//=> prod
 process.env.HOSTNAME //=> DOLPHIN
 ```
 >### del(key, value)
 remove the key from the (dotenv and node) environment.
-```
+```javascript
 const dotenvM = require('dotenv-manipulator')
 dotenvM.del('hostname')
 process.env.HOSTNAME //=> undefined
@@ -86,7 +86,7 @@ process.env.HOSTNAME //=> undefined
 
 >### update(key, value)
 Just a convenient alias, act the same as [add()](#add)
-```
+```javascript
 const dotenvM = require('dotenv-manipulator')
 dotenvM.del('hostname')
 process.env.HOSTNAME //=> undefined
