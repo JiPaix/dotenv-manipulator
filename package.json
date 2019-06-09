@@ -1,15 +1,16 @@
 {
   "name": "dotenv-manipulator",
   "version": "1.0.2",
-  "description": "easlity manipulate both dotenv (file) and process.env (variable)",
+  "description": "easily manipulate both dotenv (file) and process.env (variable)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JiPai",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "dotenv": "^8.0.0",
     "dotenv-expand": "^5.1.0"
-  }
+  },
+  "repository": "github:JiPaix/dotenv-manipulator"
 }
