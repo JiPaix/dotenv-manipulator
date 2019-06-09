@@ -1,4 +1,6 @@
 # dotenv-manipulator
+[![Build Status](https://travis-ci.com/JiPaix/execution-time.svg?branch=master)](https://travis-ci.com/JiPaix/execution-time)
+
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files 
 ## Installation
 ```
