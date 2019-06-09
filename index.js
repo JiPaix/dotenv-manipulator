@@ -27,3 +27,5 @@ class Env {
         process.env[key] = value;
     }
 }
+const instance = new Env()
+module.exports = Object.freeze(instance);
