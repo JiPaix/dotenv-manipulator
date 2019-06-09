@@ -1,5 +1,7 @@
 # dotenv-manipulator
-[![Build Status](https://travis-ci.com/JiPaix/execution-time.svg?branch=master)](https://travis-ci.com/JiPaix/execution-time)
+[![NPM](https://nodei.co/npm/dotenv-manipulator.png?stars=true)](https://nodei.co/npm/dotenv-manipulator/)
+
+[![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator)
 
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files 
 ## Installation

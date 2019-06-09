@@ -1,6 +1,6 @@
 {
   "name": "dotenv-manipulator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "easily manipulate both dotenv (file) and process.env (variable)",
   "main": "index.js",
   "scripts": {
