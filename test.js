@@ -1,5 +1,5 @@
 var assert = require('assert')
-let dotenvM = require('../index')
+let dotenvM = require('./index')
 
 describe('dotenvM', () => {
     it('loads itself', () => {

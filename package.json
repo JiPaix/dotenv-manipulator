@@ -1,10 +1,10 @@
 {
   "name": "dotenv-manipulator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "easily manipulate both dotenv (file) and process.env (variable)",
   "main": "index.js",
   "scripts": {
-    "test": "touch .env && mocha test/index.js"
+    "test": "touch .env && mocha test.js"
   },
   "author": "JiPai",
   "license": "GPL-3.0",
@@ -15,5 +15,8 @@
   "repository": "github:JiPaix/dotenv-manipulator",
   "devDependencies": {
     "mocha": "^6.1.4"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
