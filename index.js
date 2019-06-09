@@ -5,13 +5,13 @@ class Env {
         this.fs = require('fs');
         require('dotenv-expand')(require('dotenv').config())
     }
-    addToEnv(key, value, callback) {
+    _add(key, value) {
         let prasedString = `${key.toUpperCase()}=${value}`;
         let stream = this.fs.createWriteStream('./.env', { flags: 'a' })
         stream.write(`${prasedString} \r\n`);
         process.env[key] = value;
     }
-    delFromEnv(key, callback) {
+    del(key) {
         this.fs.readFile('./.env', 'utf8', (err, fileContent) => {
             if (err) throw err
             let newFileContent = fileContent.replace(new RegExp(`(\n|\r)^${key}.*$\s*(\n|\r)`, 'gim'), '')
@@ -20,9 +20,15 @@ class Env {
             delete process.env[key]
         });
     }
-    updateEnv(key, value) {
-        this.delFromEnv(key, () => {
-            this.addToEnv(key, value)
+    add(key, value) {
+        this.del(key, () => {
+            this._add(key, value)
+        })
+        process.env[key] = value;
+    }
+    update(key, value) {
+        this.del(key, () => {
+            this._add(key, value)
         })
         process.env[key] = value;
     }
