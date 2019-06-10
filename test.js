@@ -10,20 +10,42 @@ describe('dotenvM', () => {
     })
     describe('Methods', () => {
         it('add()', () => {
-            dotenvM.add('MOCHA', true)
-            assert.ok(process.env.MOCHA)
+            dotenvM._add('MOCHA', 'aribtrary value', () => {
+                if (process.env.MOCHA === 'aribtrary value' && dotenvM.fs.statSync('./.env').size == 24) {
+                    assert.ok(true)
+                } else if (dotenvM.fs.statSync('./.env').size !== 24) {
+                    assert.fail('something went wrong with the file')
+                } else if (process.env.MOCHA === 'aribtrary value') {
+                    assert.fail(`can't access process.env ADD`)
+                }
+            })
         })
         it('del()', () => {
-            process.env.MOCHA = true;
-            dotenvM.del('MOCHA')
-            setTimeout(() => {
-                assert.equal('undefined', typeof process.env.MOCHA)
-            }, 250)
+            process.env.MOCHA = 'arbitrary value';
+            dotenvM._del('MOCHA', () => {
+                if (typeof process.env.MOCHA === 'undefined' && dotenvM.fs.statSync('./.env').size == 0) {
+                    assert.ok(true)
+                } else if (dotenvM.fs.statSync('./.env').size !== 0) {
+                    assert.fail('something went wrong with the file')
+                } else if (typeof process.env.MOCHA !== 'undefined') {
+                    assert.fail(`can't access process.env ADD`)
+                }
+            })
         })
         it('update()', () => {
-            dotenvM.add('MOCHA', false)
-            dotenvM.update('MOCHA', true)
-            assert.ok(process.env.MOCHA)
+            dotenvM._add('MOCHA', 'aribtrary value', () => {
+                dotenvM._del('MOCHA', () => {
+                    dotenvM._add('MOCHA', 'second aribtrary value', () => {
+                        if (process.env.MOCHA === 'second aribtrary value' && dotenvM.fs.statSync('./.env').size === 31) {
+                            assert.ok(true)
+                        } else if (dotenvM.fs.statSync('./.env').size !== 31) {
+                            assert.fail('something went wrong with the file')
+                        } else if (process.env.MOCHA === 'second aribtrary value') {
+                            assert.fail(`can't access process.env ADD`)
+                        }
+                    })
+                })
+            })
         })
     })
 })
