@@ -1,7 +1,7 @@
 {
   "name": "dotenv-manipulator",
-  "version": "1.0.7",
-  "description": "easily manipulate both dotenv (file) and process.env (variable)",
+  "version": "1.0.8",
+  "description": "dotenv-manipulator allows you to add, remove or update both environment variables and .env files on runtime",
   "main": "index.js",
   "scripts": {
     "test": "touch .env && mocha test.js"

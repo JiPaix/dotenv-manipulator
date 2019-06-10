@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator)
 
-`dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files
+`dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
 >dotenv-manipulator aka environment manipulation made easy for slackers
 
