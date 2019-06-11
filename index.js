@@ -23,11 +23,8 @@ class Env {
                                 callback();
                             })
                     } else {
-                        stream.close()
                         if (typeof callback === 'function')
-                            stream.on('close', () => {
-                                callback(`this key already exists in .env file`)
-                            })
+                            callback(`this key already exists in .env file`)
                     }
                 } else {
                     let prasedString = `${key.toUpperCase()}=${value}\r\n`;
@@ -65,9 +62,7 @@ class Env {
                             })
                     } else {
                         if (typeof callback === 'function')
-                            stream.on('close', () => {
-                                callback(`key not found in .env file`)
-                            })
+                            callback(`key not found in .env file`)
                     }
                 } else {
                     if (typeof callback === 'function')

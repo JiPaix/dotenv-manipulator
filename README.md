@@ -25,7 +25,7 @@ dotenvM.add('fruits', 'apple', () => {
 dotenvM.del('vegetable', () => {
     // ...
 })
-dotenvM.update('', 'production', () => {
+dotenvM.update('public_ip', '101.101.0.1', () => {
     // ...
 })
 ```
