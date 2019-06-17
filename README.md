@@ -16,16 +16,16 @@ npm i -S dotenv-manipulator
 const dotenvM = require('dotenv-manipulator')
 
 dotenvM.add('public_ip', '255.255.0.1')
-dotenvM.del('temporary_data')
+dotenvM.remove('temporary_data')
 dotenvM.update('node_env', 'production')
 
 dotenvM.add('fruits', 'apple', () => {
     // ...
 })
-dotenvM.del('vegetable', () => {
+dotenvM.remove('vegetable', () => {
     // ...
 })
-dotenvM.update('', 'production', () => {
+dotenvM.update('public_ip', '101.101.0.1', () => {
     // ...
 })
 ```
@@ -40,7 +40,7 @@ dotenvM.update('', 'production', () => {
 const dotenvM = require('dotenv-manipulator')
 
 dotenvM.add('public_ip', '255.255.0.1')
-dotenvM.del('fruits')
+dotenvM.remove('fruits')
 dotenvM.update('node_env', 'production')
 ```
 ## After :
@@ -67,24 +67,24 @@ dotenvM.add('public_ip', '255.255.0.1')
 // but without you being aware if this failed or not.
 ```
 
->### del(key, value, [callback])
+>### remove(key, value, [callback])
 Removes an **existing** key from the *environment*.<br>`callback` is optional and return an error if you tried to remove key that isn't in the *environment*.
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
-dotenvM.del('fruits', (err) => {
+dotenvM.remove('fruits', (err) => {
     if(err)
         throw err
     //=> code
 })
 
 // is the same as
-dotenvM.del('fruits')
+dotenvM.remove('fruits')
 // but without you being aware if this failed or not.
 ```
 
 >### update(key, value, [callback])
-Updates an **existing** key from the *environment*.<br>`callback` is optional and return an error if you tried to update key that isn't in the *environment*.
+Updates an **existing** key from the *environment*. Adds it if non-existant<br>`callback` is optional and return an error if you tried to update key that isn't in the *environment*.
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -96,5 +96,65 @@ dotenvM.update('node_env', 'production', (err) => {
 
 // is the same as
 dotenvM.update('development', 'production')
+// but without you being aware if this failed or not.
+```
+
+>### bulkAdd(obj, [callback])
+Takes an object and adds its keys and values to the *environment*, **ignore** keys already in it.<br>`callback` is optional and called when the *environment* is updated, returns an array listing ignored keys.
+```javascript
+const dotenvM = require('dotenv-manipulator')
+let obj = {
+  "first": "one"
+  "second": "two" 
+}
+
+dotenvM.bulkAdd(obj, (err) => {
+    if(err)
+        throw err
+    //=> code
+})
+
+// is the same as
+dotenvM.bulkAdd(obj)
+// but without you being aware if this failed or not.
+```
+
+>### bulkRemove(arr, [callback])
+Takes an array of keys and remove them (and their values), **ignore** already non-existing keys.<br>`callback` is optional and called when the *environment* is updated, returns an array listing ignored keys.
+```javascript
+const dotenvM = require('dotenv-manipulator')
+let arr = ['first', 'second']
+
+dotenvM.bulkRemove(arr, (err) => {
+    if(err)
+        throw err
+    //=> code
+})
+
+// is the same as
+dotenvM.bulkRemove(obj)
+// but without you being aware if this failed or not.
+```
+
+>### bulkUpdate(obj, [callback])
+Takes an object and update values of existing keys to the *environment*, **adds** them if they aren't already in the *environment*.<br>`callback` is optional and called when the *environment* is updated, returns an array listing added (not updated) keys.
+```javascript
+const dotenvM = require('dotenv-manipulator')
+let obj = {
+  "first": "one"
+  "second": "two" 
+}
+
+process.env.SECOND === undefined // true
+
+dotenvM.bulkUpdate(obj, (err) => {
+    if(err)
+        throw err
+    process.env.SECOND === undefined // false
+    //=> code
+})
+
+// is the same as
+dotenvM.bulkUpdate(obj)
 // but without you being aware if this failed or not.
 ```
