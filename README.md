@@ -5,7 +5,6 @@
 
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
->dotenv-manipulator aka environment manipulation made easy for slackers
 
 # Installation
 ```
@@ -16,13 +15,13 @@ npm i -S dotenv-manipulator
 const dotenvM = require('dotenv-manipulator')
 
 dotenvM.add('public_ip', '255.255.0.1')
-dotenvM.remove('temporary_data')
+dotenvM.del('temporary_data')
 dotenvM.update('node_env', 'production')
 
 dotenvM.add('fruits', 'apple', () => {
     // ...
 })
-dotenvM.remove('vegetable', () => {
+dotenvM.del('vegetable', () => {
     // ...
 })
 dotenvM.update('public_ip', '101.101.0.1', () => {
@@ -40,7 +39,7 @@ dotenvM.update('public_ip', '101.101.0.1', () => {
 const dotenvM = require('dotenv-manipulator')
 
 dotenvM.add('public_ip', '255.255.0.1')
-dotenvM.remove('fruits')
+dotenvM.del('fruits')
 dotenvM.update('node_env', 'production')
 ```
 ## After :
@@ -72,14 +71,14 @@ Removes an **existing** key from the *environment*.<br>`callback` is optional an
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
-dotenvM.remove('fruits', (err) => {
+dotenvM.del('fruits', (err) => {
     if(err)
         throw err
     //=> code
 })
 
 // is the same as
-dotenvM.remove('fruits')
+dotenvM.del('fruits')
 // but without you being aware if this failed or not.
 ```
 
@@ -125,14 +124,14 @@ Takes an array of keys and remove them (and their values), **ignore** already no
 const dotenvM = require('dotenv-manipulator')
 let arr = ['first', 'second']
 
-dotenvM.bulkRemove(arr, (err) => {
+dotenvM.bulkDel(arr, (err) => {
     if(err)
         throw err
     //=> code
 })
 
 // is the same as
-dotenvM.bulkRemove(obj)
+dotenvM.bulkDel(obj)
 // but without you being aware if this failed or not.
 ```
 
