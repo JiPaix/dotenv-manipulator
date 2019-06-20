@@ -16,7 +16,7 @@ addons:
 jdk:
   - oraclejdk8
 
-script:
+before_script:
   - sonar-scanner
 
 cache:
