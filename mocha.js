@@ -19,21 +19,21 @@ describe('dotenv-manipulator', function () {
     beforeEach(function (done) {
       setTimeout(() => {
         done()
-      }, 100)
+      }, 300)
     })
     it('should adds a bunch of keys and values', () => {
       dotenvM.bulkAdd(data, (e) => {
-        assert.strictEqual(52, dotenvM.fs.statSync('./.env').size)
+        assert.strictEqual(49, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should remove some of the previously added keys', () => {
       dotenvM.bulkDel(toRemove, (e) => {
-        assert.strictEqual(27, dotenvM.fs.statSync('./.env').size)
+        assert.strictEqual(24, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should updates values', () => {
       dotenvM.bulkUpdate(toUpdate, (e) => {
-        assert.strictEqual(36, dotenvM.fs.statSync('./.env').size)
+        assert.strictEqual(27, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should add 1 key/value pair', () => {
