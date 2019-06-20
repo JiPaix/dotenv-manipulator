@@ -1,7 +1,7 @@
 # dotenv-manipulator
 [![NPM](https://nodei.co/npm/dotenv-manipulator.png?stars=true)](https://nodei.co/npm/dotenv-manipulator/)
 
-[![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator)
+[![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=JiPaix_dotenv-manipulator&metric=alert_status)](https://sonarcloud.io/dashboard?id=JiPaix_dotenv-manipulator)
 
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
