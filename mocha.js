@@ -1,12 +1,12 @@
 /* eslint-env mocha */
-const assert = require('assert');
+const assert = require('assert')
 const dotenvM = require('./index')
 const data = {
   'first': 'one',
   'second': 'two',
   'third': 'three',
   'fourth': 'four'
-};
+}
 
 const toRemove = ['fourth', 'second']
 const toUpdate = {
@@ -19,36 +19,36 @@ describe('dotenv-manipulator', function () {
     beforeEach(function (done) {
       setTimeout(() => {
         done()
-      }, 100);
+      }, 100)
     })
     it('should adds a bunch of keys and values', () => {
       dotenvM.bulkAdd(data, (e) => {
-        assert.strictEqual(dotenvM.fs.statSync('./.env').size, 49)
+        assert.strictEqual(52, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should remove some of the previously added keys', () => {
-      dotenvM.bulkRemove(toRemove, (e) => {
-        assert.strictEqual(dotenvM.fs.statSync('./.env').size, 24)
+      dotenvM.bulkDel(toRemove, (e) => {
+        assert.strictEqual(27, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should updates values', () => {
       dotenvM.bulkUpdate(toUpdate, (e) => {
-        assert.strictEqual(dotenvM.fs.statSync('./.env').size, 27)
+        assert.strictEqual(36, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should add 1 key/value pair', () => {
       dotenvM.add('sixth', 'six', (e) => {
-        assert.strictEqual(dotenvM.fs.statSync('./.env').size, 38)
+        assert.strictEqual(38, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should remove 1 key/value pair', () => {
-      dotenvM.remove('fifth', (e) => {
-        assert.strictEqual(dotenvM.fs.statSync('./.env').size, 29)
+      dotenvM.del('fifth', (e) => {
+        assert.strictEqual(29, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should update 1 key/value pair', () => {
       dotenvM.update('sixth', 6, (e) => {
-        assert.strictEqual(dotenvM.fs.statSync('./.env').size, 27)
+        assert.strictEqual(27, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('process.env should have changed according to previous manipulations', () => {
