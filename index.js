@@ -150,7 +150,7 @@ class Env {
   }
 
   del (key, done) {
-    this.bulkRemove([key], (err) => {
+    this.bulkDel([key], (err) => {
       if (typeof err !== 'undefined') {
         if (err.length > 1) {
           done(err)

@@ -66,7 +66,7 @@ dotenvM.add('public_ip', '255.255.0.1')
 // but without you being aware if this failed or not.
 ```
 
->### remove(key, value, [callback])
+>### del(key, value, [callback])
 Removes an **existing** key from the *environment*.<br>`callback` is optional and return an error if you tried to remove key that isn't in the *environment*.
 ```javascript
 const dotenvM = require('dotenv-manipulator')
@@ -118,7 +118,7 @@ dotenvM.bulkAdd(obj)
 // but without you being aware if this failed or not.
 ```
 
->### bulkRemove(arr, [callback])
+>### bulkDel(arr, [callback])
 Takes an array of keys and remove them (and their values), **ignore** already non-existing keys.<br>`callback` is optional and called when the *environment* is updated, returns an array listing ignored keys.
 ```javascript
 const dotenvM = require('dotenv-manipulator')
