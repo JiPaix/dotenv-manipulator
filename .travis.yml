@@ -1,3 +1,6 @@
+dist: trusty
+sudo: required
+
 language: node_js
 
 node_js:
@@ -5,3 +8,17 @@ node_js:
 
 install:
   - npm install --quiet
+
+addons:
+  sonarcloud:
+    organization: "jipaix-github"
+
+jdk:
+  - oraclejdk8
+
+script:
+  - sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
