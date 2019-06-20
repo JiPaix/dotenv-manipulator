@@ -53,7 +53,6 @@ class Env {
     this.fs.createReadStream('./.env').on('data', data => {
       fileContent = data.toString()
     }).on('end', () => {
-
       done(fileContent || Buffer.alloc(0).toString())
     })
   }
@@ -91,7 +90,7 @@ class Env {
     })
   }
 
-  bulkRemove (arr, done) {
+  bulkDel (arr, done) {
     this._readEnv(envFile => {
       let err = []
       for (var key of arr) {
@@ -150,7 +149,7 @@ class Env {
     })
   }
 
-  remove (key, done) {
+  del (key, done) {
     this.bulkRemove([key], (err) => {
       if (typeof err !== 'undefined') {
         if (err.length > 1) {
