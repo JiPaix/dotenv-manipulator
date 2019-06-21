@@ -1,7 +1,7 @@
 # dotenv-manipulator
 [![NPM](https://nodei.co/npm/dotenv-manipulator.png?stars=true)](https://nodei.co/npm/dotenv-manipulator/)
 
-[![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=JiPaix_dotenv-manipulator&metric=alert_status)](https://sonarcloud.io/dashboard?id=JiPaix_dotenv-manipulator)
+ ![node](https://img.shields.io/node/v/dotenv-manipulator.svg) [![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator) ![Sonar Quality Gate](https://img.shields.io/sonar/https/sonarcloud.io/JiPaix_dotenv-manipulator/quality_gate.svg) ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/JiPaix/dotenv-manipulator.svg) ![npm](https://img.shields.io/npm/dm/dotenv-manipulator.svg)
 
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
@@ -10,7 +10,8 @@ using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https:/
 ```
 npm i -S dotenv-manipulator
 ```
-# Usage
+# Example
+PS:  `dotenv-manipulator` **always** converts keys to uppcase.
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -26,6 +27,17 @@ dotenvM.del('vegetable', () => {
 })
 dotenvM.update('public_ip', '101.101.0.1', () => {
     // ...
+})
+
+let data = {
+  'first': 'one',
+  'second': 'two',
+  'third': 'three'
+}
+
+dotenvM.bulkAdd(data, (err) => {
+  if(err) // do something with this array
+    // else..
 })
 ```
 # Behavior
@@ -48,7 +60,7 @@ dotenvM.update('node_env', 'production')
 | `NODE_ENV=production`   | `process.env.NODE_ENV //=> "production"`   |
 | `PUBLIC_IP=255.255.0.1` | `process.env.PUBLIC_IP //=> "255.255.0.1"` |
 
-## API
+# API
 For a better understanding from here *`environment`* will refer to both your `.env` file and your node environment aka `process.env`
 >### <a name="add"></a>add(key, value, [callback])
 Adds a key/value pair, **only if** the key isn't already set in the *environment*.<br>`callback` is optional and return an error if you try to add a key that is already in the *environment*.

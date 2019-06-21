@@ -17,6 +17,6 @@ module.exports = {
   ],
   "rules": {
     "lines-between-class-members": ["error", "always"],
-    "mocha/no-exclusive-tests": "error"
+    "mocha/no-exclusive-tests": "error",
   }
 };

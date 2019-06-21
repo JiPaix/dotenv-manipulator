@@ -4,7 +4,8 @@
   "description": "dotenv-manipulator allows you to add, remove or update both environment variables and .env files on runtime",
   "main": "index.js",
   "scripts": {
-    "test": "rm -rf ./.env && touch ./.env && mocha mocha.js"
+    "test": "rm -rf ./.env && touch ./.env && mocha test/mocha.js",
+    "docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
   },
   "author": "JiPai",
   "license": "GPL-3.0",
@@ -21,6 +22,8 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "jsdoc": "^3.6.2",
+    "minami": "^1.2.3",
     "mocha": "^6.1.4"
   },
   "engines": {

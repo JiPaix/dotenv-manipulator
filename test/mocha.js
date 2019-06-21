@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 const assert = require('assert')
-const dotenvM = require('./index')
+const dotenvM = require('../index.js')
 const data = {
   'first': 'one',
   'second': 'two',
