@@ -17,7 +17,7 @@ jdk:
   - oraclejdk8
 
 before_script:
-  - nyc --reporter=lcov npm test
+  - nyc --reporter=lcovonly npm test
   - sonar-scanner
 
 cache:
