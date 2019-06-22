@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "rm -rf ./.env && touch ./.env && mocha test/mocha.js",
-    "docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
+    "docs": "node_modules/.bin/jsdoc index.js -t node_modules/minami -d ./docs"
   },
   "author": "JiPai",
   "license": "GPL-3.0",

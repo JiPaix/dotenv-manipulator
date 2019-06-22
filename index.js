@@ -5,16 +5,24 @@
  */
 class Env {
   /**
-   * Loads dependencies : fs, dotenv, dotenv-expand.
+   * Loads dependencies and create a .env file if there's none
    *
    * @hideconstructor
    * @example
    * const dotenvM = require('dotenv-manipulator')
    */
 
+  /**
+* @callback Env~done
+* @param  {Array} [array] - Value of array element
+* @returns {Array.<string>|Void}
+*/
   constructor () {
     this.fs = require('fs')
     require('dotenv-expand')(require('dotenv').config())
+    this.fs.writeFile('./.env', '', { flag: 'wx' }, (e) => {
+      return e
+    })
   }
 
   _findKeyInString (string, key) {
@@ -70,35 +78,17 @@ class Env {
         })
       })
   }
-  /**
- * Callback.
- *
- * @description Callback.
- * @callback Env~done
- * @param {string[]} [err] - Array of ignored keys.
- */
 
   /**
   * Takes an object and adds its keys and values to the environment, ignore keys already in it.
   * @param {Object.<string, string>} obj - Object containing keys and values.
-  * @param {Env~done} [callback] - callback listing ignored keys.
+  * @param {Env~done} callback - callback listing ignored keys.
   * @example
-  * const dotenvM = require('dotenv-manipulator')
+  * let obj = {'first' : 'one','second' : 'two'}
   *
-  * let myObj = {
-  *   'first' : 'one',
-  *   'second' : 'two',
-  *   'third' : 'three',
-  *   'fourth' : 'four'
-  * }
-  *
-  * dotenvM.bulkAdd(myObj)
-  * @example <caption> OR </caption>
-  * const dotenvM = require('dotenv-manipulator')
-  *
-  * dotenvM.add(myObj, (err) => {
-  *   if(err) // could returns : ['SECOND', 'FOURTH'] if the keys were already set
-  *     // else ....
+  * dotenvM.bulkAdd(obj, (ignored) => {
+  *   if(ignored)
+  *     // array of ignored keys
   * })
   */
 
@@ -128,19 +118,13 @@ class Env {
   /**
   * Takes an array of keys and remove them (and their values) from the environment, ignore already non-existing keys.
   * @param {string[]} arr - Array containing keys.
-  * @param {Env~done} [callback] - callback listing ignored keys.
+  * @param {Env~done} callback - callback listing ignored keys.
   * @example
-  * const dotenvM = require('dotenv-manipulator')
+  * let arr = ['first', 'second', 'third', 'fourth']
   *
-  * let myArr = ['first', 'second', 'third', 'fourth']
-  *
-  * dotenvM.bulkDel(myArr)
-  * @example <caption> OR </caption>
-  * const dotenvM = require('dotenv-manipulator')
-  *
-  * dotenvM.bulkDel(myArr, (err) => {
-  *   if(err) // could returns : ['SECOND', 'FOURTH'] if the keys were already non-existant
-  *     // else ....
+  * dotenvM.bulkDel(arr, (ignored) => {
+  *   if(ignored)
+  *     // array of ignored keys
   * })
   */
 
@@ -170,24 +154,13 @@ class Env {
    * @description Takes an object and update values of existing keys, adds them if they aren't already in the environment.
    *
    * @param {string[]} obj - Array containing keys.
-   * @param {Env~done} [done] - Callback listing ignored keys.
+   * @param {Env~done} done - Callback listing ignored keys.
    * @example
-   * const dotenvM = require('dotenv-manipulator')
+   * let obj = {'first' : 'one','second' : 'two'}
    *
-   * let myObj = {
-   *  'first' : 'one',
-   *  'second' : 'two',
-   *  'third' : 'three',
-   *  'fourth' : 'four'
-   * }
-   *
-   * dotenvM.bulkUpdate(myObj)
-   * @example <caption> OR </caption>
-   * const dotenvM = require('dotenv-manipulator')
-   *
-   * dotenvM.bulkUpdate(myObj, (err) => {
-   *   if(err) // could returns : ['SECOND', 'FOURTH'] if the keys were non-existant
-   *     // else ....
+   * dotenvM.bulkUpdate(obj, (added) => {
+   *   if(added)
+   *    // array of added keys (instead of updated)
    * })
    */
   bulkUpdate (obj, done) {
@@ -219,13 +192,10 @@ class Env {
   * @description Adds a key/value pair, only if the key isn't already set in the environment.
   * @param {string} key - A key.
   * @param {string} value - a value.
-  * @param {Env~done} [done] - callback listing ignored keys.
+  * @param {Env~done} done - callback listing ignored keys.
   * @example
-  * dotenvM.add('hostname', 'mywebsite.com')
-  * @example
-  * dotenvM.add('public_ip', '255.255.255.0', (err) => {
-  *   if(err) // returns : ['PUBLIC_IP'] if the key was already set
-  *     // else ....
+  * dotenvM.add('public_ip', '255.255.255.0', (ignored) => {
+  *   if(ignored) // array with the ignored key
   * })
   */
   add (key, value, done) {
@@ -242,13 +212,10 @@ class Env {
   * @description Removes an existing key from the environment.
   * @param {string} key - A key.
   * @param {string} value - a value.
-  * @param {Env~done} [done] - callback listing ignored keys.
+  * @param {Env~done} done - callback listing ignored keys.
   * @example
-  * dotenvM.del('hostname')
-  * @example
-  * dotenvM.del('public_ip', (err) => {
-  *   if(err) // returns : ['PUBLIC_IP'] if the key was non-existant
-  *     // else ....
+  * dotenvM.del('public_ip', () => {
+  *   if(ignored) // array with the ignored key
   * })
   */
   del (key, done) {
@@ -265,13 +232,10 @@ class Env {
   * @description Updates an existing key from the environment. Adds it if non-existant.
   * @param {string} key - a key.
   * @param {string} value - a value.
-  * @param {Env~done} [done] - callback listing ignored keys.
+  * @param {Env~done} done - callback listing ignored keys.
   *@example
-  * dotenvM.update('hostname', 'mywebsite.com')
-  * @example
-  * dotenvM.update('public_ip', '255.255.255.0', (err) => {
-  *   if(err) // returns : ['PUBLIC_IP'] if the key was non-existant
-  *     // else ....
+  * dotenvM.update('public_ip', '255.255.255.0', (added) => {
+  *   if(added) // array with the key if it's added instead of updated
   * })
   */
   update (key, value, done) {
