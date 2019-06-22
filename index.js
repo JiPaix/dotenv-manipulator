@@ -80,7 +80,7 @@ class Env {
   }
 
   /**
-  * Takes an object and adds its keys and values to the environment, ignore keys already in it.
+  * Adds keys and value from an Object that aren't defined in the env.
   * @param {Object.<string, string>} obj - Object containing keys and values.
   * @param {Env~done} callback - callback listing ignored keys.
   * @example
@@ -116,7 +116,7 @@ class Env {
   }
 
   /**
-  * Takes an array of keys and remove them (and their values) from the environment, ignore already non-existing keys.
+  * Takes an array containing keys and remove them (and their values) from the environment, ignore already non-existing keys.
   * @param {string[]} arr - Array containing keys.
   * @param {Env~done} callback - callback listing ignored keys.
   * @example
@@ -151,8 +151,7 @@ class Env {
   }
 
   /**
-   * @description Takes an object and update values of existing keys, adds them if they aren't already in the environment.
-   *
+   * @description Takes an object of keys and values and update values of existing keys, adds them if they aren't already in the environment.
    * @param {string[]} obj - Array containing keys.
    * @param {Env~done} done - Callback listing ignored keys.
    * @example
@@ -189,7 +188,7 @@ class Env {
   }
 
   /**
-  * @description Adds a key/value pair, only if the key isn't already set in the environment.
+  * @description Adds a key if its not defined in the env.
   * @param {string} key - A key.
   * @param {string} value - a value.
   * @param {Env~done} done - callback listing ignored keys.
@@ -209,7 +208,7 @@ class Env {
   }
 
   /**
-  * @description Removes an existing key from the environment.
+  * @description Deletes a key if it's defined in the env.
   * @param {string} key - A key.
   * @param {string} value - a value.
   * @param {Env~done} done - callback listing ignored keys.
@@ -229,7 +228,7 @@ class Env {
   }
 
   /**
-  * @description Updates an existing key from the environment. Adds it if non-existant.
+  * @description Updates a key if it's defined in the env. Adds it if non-existant.
   * @param {string} key - a key.
   * @param {string} value - a value.
   * @param {Env~done} done - callback listing ignored keys.

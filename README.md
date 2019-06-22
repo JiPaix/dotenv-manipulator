@@ -5,7 +5,6 @@
 
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
-
 # Installation
 ```
 npm i -S dotenv-manipulator
@@ -14,10 +13,7 @@ npm i -S dotenv-manipulator
 ## `dotenv-manipator` will **always** :
 * Converts keys to uppercase (input and ouput).
 * Creates a `.env` file (when requiring) at the root of your project **if there's none**.
-
 # Example
-
-
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -77,7 +73,7 @@ dotenvM.bulkDel(arr, (doesntExist) => {
 })
 ```
 # API
->### <a name="add"></a>add(key, value, callback)
+>### add(key, value, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 200](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L200)</span>
 | Name     | Type     | Description |
 | -------- | -------- | ----------- |
 | key      | String   | key name    |
@@ -96,8 +92,7 @@ dotenvM.add('public_ip', '255.255.0.1', (exist) => {
         // ['PUBLIC_IP']
 })
 ```
-
->### del(key, callback)
+>### del(key, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 220](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L220)</span>
 | Name     | Type     | Description |
 | -------- | -------- | ----------- |
 | key      | String   | key name    |
@@ -115,7 +110,7 @@ dotenvM.del('fruits', (notDefined) => {
       // ['FRUITS']
 })
 ```
->### update(key, value, callback)
+>### update(key, value, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 240](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L240)</span>
 | Name     | Type     | Description |
 | -------- | -------- | ----------- |
 | key      | String   | key name    |
@@ -135,11 +130,11 @@ dotenvM.update('node_env', 'production', (added) => {
       // ['NODE_ENV']
 })
 ```
->### bulkAdd(obj, callback)
-| Name     | Type     | Description                       |
-| -------- | -------- | --------------------------------- |
-| obj      | Object   | Object containing keys and values |
-| callback | Callback |
+>### bulkAdd(obj, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 95](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L95)</span>
+| Name     | Type                    | Description                       |
+| -------- | ----------------------- | --------------------------------- |
+| obj      | Object.<string, string> | Object containing keys and values |
+| callback | Callback                |
   - Adds keys that aren't defined in the *env*.
   - If one or more keys are already defined
     - They are skipped 
@@ -160,11 +155,11 @@ dotenvM.bulkAdd(obj, (exist) => {
         // ['FIRST', 'SECOND']
 })
 ```
->### bulkDel(arr, callback)
-| Name     | Type     | Description                     |
-| -------- | -------- | ------------------------------- |
-| arr      | Array    | Array containing keys to delete |
-| callback | Callback |
+>### bulkDel(arr, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 131](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L131)</span>
+| Name     | Type           | Description                     |
+| -------- | -------------- | ------------------------------- |
+| arr      | Array.<string> | Array containing keys to delete |
+| callback | Callback       |
   - Deletes keys that are defined in the *env*.
   - If one or more keys aren't defined
     - The key are skipped
@@ -181,11 +176,11 @@ dotenvM.bulkDel(arr, (notDefined) => {
       // ['SECOND', 'THIRD']
 })
 ```
->### bulkUpdate(obj, callback)
-| Name     | Type     | Description                       |
-| -------- | -------- | --------------------------------- |
-| obj      | Object   | Object containing keys and values |
-| callback | Callback |
+>### bulkUpdate(obj, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 161](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L161)</span>
+| Name     | Type                    | Description                       |
+| -------- | ----------------------- | --------------------------------- |
+| obj      | Object.<string, string> | Object containing keys and values |
+| callback | Callback                |
   - Updates keys that are defined in the *env*.
   - If one or more key aren't defined
     - Acts as `add()` 
