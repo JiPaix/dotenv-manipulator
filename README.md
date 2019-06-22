@@ -73,7 +73,7 @@ dotenvM.bulkDel(arr, (doesntExist) => {
 })
 ```
 # API
->### add(key, value, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 200](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L200)</span>
+>### add(key, value, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 200](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L200)</h6>
 | Name     | Type     | Description |
 | -------- | -------- | ----------- |
 | key      | String   | key name    |
@@ -92,7 +92,7 @@ dotenvM.add('public_ip', '255.255.0.1', (exist) => {
         // ['PUBLIC_IP']
 })
 ```
->### del(key, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 220](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L220)</span>
+>### del(key, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 220](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L220)</h6>
 | Name     | Type     | Description |
 | -------- | -------- | ----------- |
 | key      | String   | key name    |
@@ -110,7 +110,7 @@ dotenvM.del('fruits', (notDefined) => {
       // ['FRUITS']
 })
 ```
->### update(key, value, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 240](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L240)</span>
+>### update(key, value, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 240](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L240)</h6>
 | Name     | Type     | Description |
 | -------- | -------- | ----------- |
 | key      | String   | key name    |
@@ -130,7 +130,7 @@ dotenvM.update('node_env', 'production', (added) => {
       // ['NODE_ENV']
 })
 ```
->### bulkAdd(obj, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 95](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L95)</span>
+>### bulkAdd(obj, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 95](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L95)</h6>
 | Name     | Type                    | Description                       |
 | -------- | ----------------------- | --------------------------------- |
 | obj      | Object.<string, string> | Object containing keys and values |
@@ -155,7 +155,7 @@ dotenvM.bulkAdd(obj, (exist) => {
         // ['FIRST', 'SECOND']
 })
 ```
->### bulkDel(arr, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 131](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L131)</span>
+>### bulkDel(arr, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 131](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L131)</h6>
 | Name     | Type           | Description                     |
 | -------- | -------------- | ------------------------------- |
 | arr      | Array.<string> | Array containing keys to delete |
@@ -176,7 +176,7 @@ dotenvM.bulkDel(arr, (notDefined) => {
       // ['SECOND', 'THIRD']
 })
 ```
->### bulkUpdate(obj, callback)<span style='float:right'>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 161](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L161)</span>
+>### bulkUpdate(obj, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 161](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L161)</h6>
 | Name     | Type                    | Description                       |
 | -------- | ----------------------- | --------------------------------- |
 | obj      | Object.<string, string> | Object containing keys and values |
