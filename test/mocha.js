@@ -24,32 +24,32 @@ describe('dotenv-manipulator', function () {
       }, 300)
     })
     it('should adds a bunch of keys and values', () => {
-      dotenvM.bulkAdd(data, (e) => {
+      dotenvM.bulkAdd(data, () => {
         assert.strictEqual(49, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should remove some of the previously added keys', () => {
-      dotenvM.bulkDel(toRemove, (e) => {
+      dotenvM.bulkDel(toRemove, () => {
         assert.strictEqual(24, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should updates values', () => {
-      dotenvM.bulkUpdate(toUpdate, (e) => {
+      dotenvM.bulkUpdate(toUpdate, () => {
         assert.strictEqual(27, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should add 1 key/value pair', () => {
-      dotenvM.add('sixth', 'six', () => {
+      dotenvM.add('sixth', 'six', (e) => {
         assert.strictEqual(38, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should remove 1 key/value pair', () => {
-      dotenvM.del('fifth', (e) => {
+      dotenvM.del('fifth', () => {
         assert.strictEqual(29, dotenvM.fs.statSync('./.env').size)
       })
     })
     it('should update 1 key/value pair', () => {
-      dotenvM.update('sixth', 6, (e) => {
+      dotenvM.update('sixth', 6, () => {
         assert.strictEqual(27, dotenvM.fs.statSync('./.env').size)
       })
     })
