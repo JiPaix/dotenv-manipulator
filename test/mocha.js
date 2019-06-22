@@ -10,14 +10,14 @@ const data = {
   'seventh': 'seven'
 }
 
-const toRemove = ['fourth', 'second']
+const toRemove = ['fourth', 'second', 'eighth']
 const toUpdate = {
   'first': 1,
   'third': 3,
   'fifth': 5
 }
 describe('dotenv-manipulator', function () {
-  describe('Methods', function () {
+  describe('Pass #1', function () {
     beforeEach(function (done) {
       setTimeout(() => {
         done()
@@ -62,6 +62,32 @@ describe('dotenv-manipulator', function () {
       arr.push(process.env.FIFTH === undefined)
       arr.push(process.env.SIXTH === '6')
       assert.ok(!arr.includes('false'))
+    })
+    after(function () {
+      dotenvM.bulkDel(['first', 'third', 'sixth'], () => {
+
+      })
+    })
+  })
+
+  describe('Pass #2', function () {
+
+    beforeEach(function (done) {
+      setTimeout(() => {
+        done()
+      }, 300)
+    })
+
+    it('add a value using update()', function () {
+      dotenvM.update('first', 'un', () => {
+        assert.strictEqual(10, dotenvM.fs.statSync('./.env').size)
+      })
+    })
+
+    it('not add a value because its already set', function () {
+      dotenvM.add('first', 'un', () => {
+        assert.strictEqual(10, dotenvM.fs.statSync('./.env').size)
+      })
     })
   })
 })
