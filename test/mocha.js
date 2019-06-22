@@ -39,7 +39,7 @@ describe('dotenv-manipulator', function () {
       })
     })
     it('should add 1 key/value pair', () => {
-      dotenvM.add('sixth', 'six', (e) => {
+      dotenvM.add('sixth', 'six', () => {
         assert.strictEqual(38, dotenvM.fs.statSync('./.env').size)
       })
     })
@@ -71,22 +71,29 @@ describe('dotenv-manipulator', function () {
   })
 
   describe('Pass #2', function () {
-
     beforeEach(function (done) {
       setTimeout(() => {
         done()
       }, 300)
     })
-
     it('add a value using update()', function () {
       dotenvM.update('first', 'un', () => {
         assert.strictEqual(10, dotenvM.fs.statSync('./.env').size)
       })
     })
-
     it('not add a value because its already set', function () {
       dotenvM.add('first', 'un', () => {
         assert.strictEqual(10, dotenvM.fs.statSync('./.env').size)
+      })
+    })
+    it('update a value', function () {
+      dotenvM.update('first', '1', () => {
+        assert.strictEqual(9, dotenvM.fs.statSync('./.env').size)
+      })
+    })
+    it('try to delete a value that doesnt exist', function () {
+      dotenvM.del('second', () => {
+        assert.strictEqual(9, dotenvM.fs.statSync('./.env').size)
       })
     })
   })

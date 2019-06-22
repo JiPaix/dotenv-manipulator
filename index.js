@@ -50,11 +50,7 @@ class Env {
   _updateToString (string, key, value) {
     let regex = new RegExp(`^${key}=.*`, 'gim')
     let ObjAsString = `${key}=${value}`
-    if (string) {
-      return string.replace(regex, ObjAsString)
-    } else {
-      return ObjAsString
-    }
+    return string.replace(regex, ObjAsString)
   }
 
   _readEnv (done) {
@@ -112,16 +108,15 @@ class Env {
       let err = []
       Object.keys(obj).map(key => {
         let KEY = key.toUpperCase()
-
         if (!this._envHas(KEY) && !this._findKeyInString(KEY, newEnvFile)) {
           newEnvFile = this._addToString(newEnvFile, KEY, obj[key])
           process.env[KEY] = obj[key]
         } else {
-          err.push(key)
+          err.push(KEY)
         }
       })
       this._writeEnv(newEnvFile, () => {
-        if (err.length > 1) {
+        if (err.length > 0) {
           done(err)
         } else {
           done()
@@ -162,7 +157,7 @@ class Env {
         }
       }
       this._writeEnv(envFile, () => {
-        if (err.length > 1) {
+        if (err.length > 0) {
           done(err)
         } else {
           done()
@@ -211,7 +206,7 @@ class Env {
         }
       })
       this._writeEnv(newEnvFile, () => {
-        if (err.length > 1) {
+        if (err.length > 0) {
           done(err)
         } else {
           done()
@@ -236,11 +231,9 @@ class Env {
   add (key, value, done) {
     this.bulkAdd(this._parse(key, value), (err) => {
       if (typeof err !== 'undefined') {
-        if (err.length > 1) {
-          done(err)
-        } else {
-          done()
-        }
+        done(err)
+      } else {
+        done()
       }
     })
   }
@@ -261,11 +254,9 @@ class Env {
   del (key, done) {
     this.bulkDel([key], (err) => {
       if (typeof err !== 'undefined') {
-        if (err.length > 1) {
-          done(err)
-        } else {
-          done()
-        }
+        done(err)
+      } else {
+        done()
       }
     })
   }
@@ -286,11 +277,9 @@ class Env {
   update (key, value, done) {
     this.bulkUpdate(this._parse(key, value), (err) => {
       if (typeof err !== 'undefined') {
-        if (err.length > 1) {
-          done(err)
-        } else {
-          done()
-        }
+        done(err)
+      } else {
+        done()
       }
     })
   }
