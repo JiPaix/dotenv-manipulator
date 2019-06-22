@@ -74,16 +74,18 @@ dotenvM.bulkDel(arr, (doesntExist) => {
 ```
 # API
 >### add(key, value, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 200](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L200)</h6>
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| key      | String   | key name    |
-| value    | String   | value       |
-| callback | Callback |
   - Adds a key if it's not defined in the *env*.
   - If it's already defined
     - `callback` returns an array containing the key
   - Else
     - `callback` variable is `undefined`
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| key      | String   | key name    |
+| value    | String   | value       |
+| callback | Callback |             |
+#### Example :
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -93,15 +95,17 @@ dotenvM.add('public_ip', '255.255.0.1', (exist) => {
 })
 ```
 >### del(key, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 220](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L220)</h6>
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| key      | String   | key name    |
-| callback | Callback |
   - Deletes a key if it's defined in the *env*.
   - If the key is defined
     - `callback` returns an array containing the key
   - Else
     - `callback`'s returned variable is `undefined`
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| key      | String   | key name    |
+| callback | Callback |             |
+#### Example :
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -111,17 +115,19 @@ dotenvM.del('fruits', (notDefined) => {
 })
 ```
 >### update(key, value, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 240](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L240)</h6>
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| key      | String   | key name    |
-| value    | String   | new value   |
-| callback | Callback |
   - Updates a key if it's defined in the *env*.
   - If it's not defined
     - Acts as `add()` 
     - `callback` returns an array containing every added keys
   - else
     - `callback`'s returned variable is `undefined`
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| key      | String   | key name    |
+| value    | String   | new value   |
+| callback | Callback |
+#### Example :
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -131,16 +137,18 @@ dotenvM.update('node_env', 'production', (added) => {
 })
 ```
 >### bulkAdd(obj, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 95](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L95)</h6>
-| Name     | Type                    | Description                       |
-| -------- | ----------------------- | --------------------------------- |
-| obj      | Object.<string, string> | Object containing keys and values |
-| callback | Callback                |
   - Adds keys that aren't defined in the *env*.
   - If one or more keys are already defined
     - They are skipped 
     - `callback` returns an array containing the key(s)
   - Else
     - `callback`'s returned variable is `undefined`
+
+| Name     | Type                    | Description                       |
+| -------- | ----------------------- | --------------------------------- |
+| obj      | Object.<string, string> | Object containing keys and values |
+| callback | Callback                |
+#### Example :
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -156,16 +164,19 @@ dotenvM.bulkAdd(obj, (exist) => {
 })
 ```
 >### bulkDel(arr, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 131](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L131)</h6>
-| Name     | Type           | Description                     |
-| -------- | -------------- | ------------------------------- |
-| arr      | Array.<string> | Array containing keys to delete |
-| callback | Callback       |
   - Deletes keys that are defined in the *env*.
   - If one or more keys aren't defined
     - The key are skipped
     - `callback` returns an array containing the skipped key(s)
   - Else
     - `callback`'s returned variable is `undefined`
+
+| Name     | Type           | Description                     |
+| -------- | -------------- | ------------------------------- |
+| arr      | Array.<string> | Array containing keys to delete |
+| callback | Callback       |                                 |
+
+#### Example :
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
@@ -177,16 +188,19 @@ dotenvM.bulkDel(arr, (notDefined) => {
 })
 ```
 >### bulkUpdate(obj, callback)<h6>[index.js](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js), [line 161](https://github.com/JiPaix/dotenv-manipulator/blob/master/index.js#L161)</h6>
-| Name     | Type                    | Description                       |
-| -------- | ----------------------- | --------------------------------- |
-| obj      | Object.<string, string> | Object containing keys and values |
-| callback | Callback                |
   - Updates keys that are defined in the *env*.
   - If one or more key aren't defined
     - Acts as `add()` 
     - `callback` returns an array containing the added key(s)
   - Else
     - `callback`'s returned variable is `undefined`
+
+| Name     | Type                    | Description                       |
+| -------- | ----------------------- | --------------------------------- |
+| obj      | Object.<string, string> | Object containing keys and values |
+| callback | Callback                |
+
+#### Example :
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
