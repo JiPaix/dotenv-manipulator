@@ -19,9 +19,7 @@ class Env {
 
   _findKeyInString (string, key) {
     let regex = new RegExp(`(\r\n)*^${key}=.*(\r\n)*`, 'gim')
-    if (string) {
-      return string.match(regex)
-    }
+    return string.match(regex)
   }
 
   _removeFromString (env, key) {
@@ -154,13 +152,13 @@ class Env {
   bulkDel (arr, done) {
     this._readEnv(envFile => {
       let err = []
-      for (var key of arr) {
-        key = key.toUpperCase()
-        if (this._envHas(key)) {
-          envFile = this._removeFromString(envFile, key)
-          delete process.env[key]
+      for (let key of arr) {
+        let KEY = key.toUpperCase()
+        if (this._envHas(KEY)) {
+          envFile = this._removeFromString(envFile, KEY)
+          delete process.env[KEY]
         } else {
-          err.push(key)
+          err.push(KEY)
         }
       }
       this._writeEnv(envFile, () => {
