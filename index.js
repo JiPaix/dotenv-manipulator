@@ -201,7 +201,7 @@ class Env {
       let newEnvFile = envFile
       Object.keys(obj).map(key => {
         let KEY = key.toUpperCase()
-        if (!this._envHas(KEY) && !this._findKeyInString(KEY, newEnvFile)) {
+        if (!this._envHas(KEY) || !this._findKeyInString(KEY, newEnvFile)) {
           newEnvFile = this._addToString(newEnvFile, KEY, obj[key])
           process.env[KEY] = obj[key]
           err.push(KEY)

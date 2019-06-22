@@ -1,11 +1,13 @@
 /* eslint-env mocha */
 const assert = require('assert')
 const dotenvM = require('../index.js')
+process.env.FIFTH = 'five'
 const data = {
   'first': 'one',
   'second': 'two',
   'third': 'three',
-  'fourth': 'four'
+  'fourth': 'four',
+  'fifth': 'five'
 }
 
 const toRemove = ['fourth', 'second']
