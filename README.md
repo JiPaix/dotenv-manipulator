@@ -1,7 +1,12 @@
 # dotenv-manipulator
-[![NPM](https://nodei.co/npm/dotenv-manipulator.png?stars=true)](https://nodei.co/npm/dotenv-manipulator/)
+[![NPM](https://nodei.co/npm/dotenv-manipulator.png?compact=true)](npmjs.com/package/dotenv-manipulator)
 
- ![node](https://img.shields.io/node/v/dotenv-manipulator.svg) [![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator) ![Sonar Quality Gate](https://img.shields.io/sonar/https/sonarcloud.io/JiPaix_dotenv-manipulator/quality_gate.svg) ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/JiPaix/dotenv-manipulator.svg) ![npm](https://img.shields.io/npm/dm/dotenv-manipulator.svg)
+![Build Status](https://img.shields.io/node/v/dotenv-manipulator.svg)
+[![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator)
+ ![npm](https://img.shields.io/npm/dm/dotenv-manipulator.svg)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=JiPaix_dotenv-manipulator&metric=alert_status)](https://sonarcloud.io/dashboard?id=JiPaix_dotenv-manipulator)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a9b5799c789bfa8d2350/maintainability)](https://codeclimate.com/github/JiPaix/dotenv-manipulator/maintainability)
 
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
