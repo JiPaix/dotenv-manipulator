@@ -35,6 +35,8 @@
     "dotenv",
     "environment",
     "manipulate",
-    "slackers"
+    ".env",
+    "runtime",
+    "process.env"
   ]
 }
