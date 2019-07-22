@@ -31,8 +31,8 @@ dotenvM.del('temporary_data', (doesntExist) => {
     // do something
 })
 
-dotenvM.update('node_env', 'production', (added) => {
-  if(added)
+dotenvM.update('node_env', 'production', (isNew) => {
+  if(isNew)
     // do something
 })
 ```
@@ -47,34 +47,31 @@ let obj = {
 
 dotenvM.bulkAdd(obj, (exist) => {
   if(exist)
-     // loop through keys that couldn't be added,
-     // because they already exist. 
-})
-```
-```javascript
-const dotenvM = require('dotenv-manipulator')
-
-let arr = ['second', 'third']
-
-dotenvM.bulkUpdate(obj, (added) => {
-  if(added)
-     // loop through keys that have been added.
-     // because they did not exist.
+     // loop through keys that couldn't be added because they were already set
 })
 ```
 ```javascript
 const dotenvM = require('dotenv-manipulator')
 
 let obj = {
-  'first': 'one',
-  'second': 'two',
-  'fourth': 'four'
+  'first': 1',
+  'second': 2,
+  'fourth': 4
 }
+
+dotenvM.bulkUpdate(obj, (isNew) => {
+  if(isNew)
+     // loop through keys that have been added because they weren't set.
+})
+```
+```javascript
+const dotenvM = require('dotenv-manipulator')
+
+let arr = ['one', 'two']
 
 dotenvM.bulkDel(arr, (doesntExist) => {
   if(doesntExist)
-     // loop through keys that couldn't be deleted,
-     // because they are not set in the first place.
+     // loop through keys that couldn't be deleted because they weren't set
 })
 ```
 # API
