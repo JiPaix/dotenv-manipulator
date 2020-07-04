@@ -10,22 +10,21 @@
   "author": "JiPai",
   "license": "GPL-3.0",
   "dependencies": {
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0"
   },
   "repository": "github:JiPaix/dotenv-manipulator",
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-standard": "^14.0.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-mocha": "^6.0.0",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^7.0.1",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "jsdoc": "^3.6.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "jsdoc": "^3.6.4",
     "minami": "^1.2.3",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1"
+    "mocha": "^8.0.1"
   },
   "engines": {
     "node": ">=6.0.0",
