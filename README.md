@@ -1,5 +1,5 @@
 # dotenv-manipulator
-[![NPM](https://nodei.co/npm/dotenv-manipulator.png?compact=true)](npmjs.com/package/dotenv-manipulator)
+[![NPM](https://nodei.co/npm/dotenv-manipulator.png?compact=true)](https://npmjs.com/package/dotenv-manipulator)
 
 ![Build Status](https://img.shields.io/node/v/dotenv-manipulator.svg)
 [![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator)
