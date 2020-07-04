@@ -33,7 +33,6 @@
   "keywords": [
     "dotenv",
     "environment",
-    "manipulate",
     ".env",
     "runtime",
     "process.env"
