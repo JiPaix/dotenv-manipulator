@@ -80,15 +80,15 @@ class Env {
   }
 
   /**
-  * Adds keys and value from an Object that aren't defined in the env.
+  * Adds keys and values from object
   * @param {Object.<string, string>} obj - Object containing keys and values.
-  * @param {Env~done} callback - callback listing ignored keys.
+  * @param {Env~done=} done - callback.
   * @example
   * let obj = {'first' : 'one','second' : 'two'}
   *
-  * dotenvM.bulkAdd(obj, (ignored) => {
-  *   if(ignored)
-  *     // array of ignored keys
+  * dotenvM.bulkAdd(obj, (failed) => {
+  *   if(failed) // if one or more keys already exists they'll remain untouched
+  *       console.log(failed) //=> ['SECOND']
   * })
   */
 
@@ -106,25 +106,27 @@ class Env {
         }
       })
       this._writeEnv(newEnvFile, () => {
-        if (err.length > 0) {
-          done(err)
-        } else {
-          done()
+        if(done) {
+          if (err.length > 0) {
+            done(err)
+          } else {
+            done()
+          }
         }
       })
     })
   }
 
   /**
-  * Takes an array containing keys and remove them (and their values) from the environment, ignore already non-existing keys.
+  * Deletes multiple keys (and their values).
   * @param {string[]} arr - Array containing keys.
-  * @param {Env~done} callback - callback listing ignored keys.
+  * @param {Env~done=} done - callback.
   * @example
   * let arr = ['first', 'second', 'third', 'fourth']
   *
   * dotenvM.bulkDel(arr, (ignored) => {
-  *   if(ignored)
-  *     // array of ignored keys
+  *   if(ignored) // if one or more keys were already non-existent
+  *       console.log(ignored) //=> ['second', 'third', 'fourth']
   * })
   */
 
@@ -141,25 +143,27 @@ class Env {
         }
       }
       this._writeEnv(envFile, () => {
-        if (err.length > 0) {
-          done(err)
-        } else {
-          done()
+        if(done) {
+          if (err.length > 0) {
+            done(err)
+          } else {
+            done()
+          }
         }
       })
     })
   }
 
   /**
-   * @description Takes an object of keys and values and update values of existing keys, adds them if they aren't already in the environment.
-   * @param {string[]} obj - Array containing keys.
-   * @param {Env~done} done - Callback listing ignored keys.
+   * @description Updates values from a given object.
+   * @param {string[]} obj - Object containing keys and values to update.
+   * @param {Env~done=} done - callback.
    * @example
-   * let obj = {'first' : 'one','second' : 'two'}
+   * let obj = {'first' : 'one', 'second' : 'two', 'third' : 'three'}
    *
    * dotenvM.bulkUpdate(obj, (added) => {
-   *   if(added)
-   *    // array of added keys (instead of updated)
+   *   if(added) // if one or more keys were added instead of updated
+   *       console.log(added) //=> ['second', 'third']
    * })
    */
   bulkUpdate (obj, done) {
@@ -178,71 +182,81 @@ class Env {
         }
       })
       this._writeEnv(newEnvFile, () => {
-        if (err.length > 0) {
-          done(err)
-        } else {
-          done()
+        if(done) {
+          if (err.length > 0) {
+            done(err)
+          } else {
+            done()
+          }
         }
       })
     })
   }
 
   /**
-  * @description Adds a key if its not defined in the env.
-  * @param {string} key - A key.
-  * @param {string} value - a value.
-  * @param {Env~done} done - callback listing ignored keys.
+  * @description Adds a key/value.
+  * @param {string} key - key to add.
+  * @param {string} value - value.
+  * @param {Env~done=} done - callback.
   * @example
-  * dotenvM.add('public_ip', '255.255.255.0', (ignored) => {
-  *   if(ignored) // array with the ignored key
+  * dotenvM.add('public_ip', '255.255.255.0', (failed) => {
+  *   if(failed) // if 'public_ip' is already defined in the env it'll remain untouched.
+  *     console.log(failed) //=> ['PUBLIC_IP']
   * })
   */
   add (key, value, done) {
     this.bulkAdd(this._parse(key, value), (err) => {
-      if (typeof err !== 'undefined') {
-        done(err)
-      } else {
-        done()
+      if(done) {
+        if (typeof err !== 'undefined') {
+          done(err)
+        } else {
+          done()
+        }
       }
     })
   }
 
   /**
-  * @description Deletes a key if it's defined in the env.
-  * @param {string} key - A key.
-  * @param {string} value - a value.
-  * @param {Env~done} done - callback listing ignored keys.
+  * @description Deletes a key (and its value)
+  * @param {string} key - key to delete.
+  * @param {Env~done=} done - callback.
   * @example
   * dotenvM.del('public_ip', () => {
-  *   if(ignored) // array with the ignored key
+  *   if(ignored) // if 'public_ip' was already non-existent
+  *       console.log(ignored) //=> ['PUBLIC_IP']
   * })
   */
   del (key, done) {
     this.bulkDel([key], (err) => {
-      if (typeof err !== 'undefined') {
-        done(err)
-      } else {
-        done()
+      if(done) {
+        if (typeof err !== 'undefined') {
+          done(err)
+        } else {
+          done()
+        }
       }
     })
   }
 
   /**
-  * @description Updates a key if it's defined in the env. Adds it if non-existant.
-  * @param {string} key - a key.
-  * @param {string} value - a value.
-  * @param {Env~done} done - callback listing ignored keys.
+  * @description Updates a key.
+  * @param {string} key - key to update.
+  * @param {string} value - new value.
+  * @param {Env~done=} done - callback.
   *@example
   * dotenvM.update('public_ip', '255.255.255.0', (added) => {
-  *   if(added) // array with the key if it's added instead of updated
+  *   if(added) // if 'public_ip' was added instead of updated
+  *       console.log(added) //=> ['PUBLIC_IP']
   * })
   */
   update (key, value, done) {
     this.bulkUpdate(this._parse(key, value), (err) => {
-      if (typeof err !== 'undefined') {
-        done(err)
-      } else {
-        done()
+      if(done) {
+        if (typeof err !== 'undefined') {
+          done(err)
+        } else {
+          done()
+        }
       }
     })
   }
