@@ -4,9 +4,10 @@
 ![Build Status](https://img.shields.io/node/v/dotenv-manipulator.svg)
 [![Build Status](https://travis-ci.com/JiPaix/dotenv-manipulator.svg?branch=master)](https://travis-ci.com/JiPaix/dotenv-manipulator)
  ![npm](https://img.shields.io/npm/dm/dotenv-manipulator.svg)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/a9b5799c789bfa8d2350/maintainability)](https://codeclimate.com/github/JiPaix/dotenv-manipulator/maintainability)
 [![](https://img.shields.io/discord/706018150520717403)](https://discord.gg/5K7nEvK)
+
+
 `dotenv-manipulator` allows you to add, remove or update  **both** environment variables and .env files **on runtime**
 using [dotenv](https://www.npmjs.com/package/dotenv) and [dotenv-expand](https://www.npmjs.com/package/dotenv-expand) as its core dependencies.
 # Installation
