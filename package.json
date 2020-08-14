@@ -1,6 +1,6 @@
 {
   "name": "dotenv-manipulator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Load, add, update or remove variables from both your .env file and process.env at runtime",
   "main": "./dist/index.js",
   "files": [
