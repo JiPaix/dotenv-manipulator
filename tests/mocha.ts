@@ -1,7 +1,10 @@
 import 'mocha'
 import { expect } from 'chai'
-import Manipulator from '../'
+import Manipulator from '../dist'
 import * as fs from 'fs'
+
+const Manipulator2 = require('../dist').default
+
 const dotenvM = new Manipulator(undefined)
 
 const generate_random_string = () =>
@@ -18,6 +21,11 @@ const data = {
 const keys = Object.keys(data)
 
 describe('dotenv-manipulator', () => {
+  it('import/require', () => {
+    expect(Manipulator).to.be.a('function')
+    expect(Manipulator2).to.be.a('function')
+    expect(Manipulator).to.be.equal(Manipulator2)
+  })
   it('add', () => {
     dotenvM.add(data, true)
     const size = fs.statSync(dotenvM.env_path).size
