@@ -33,7 +33,7 @@ Manipulator constructor has 3 optional arguments:
 ```js
 new Manipulator(envPath, throwable, encoding)
 ```
-- Path to `.env`, default is `__dirname`.
+- Path to `.env`, default is `process.cwd()`.
 - If set to `true` functions throw errors whenever there's an incorrect input.
 - Specify file encoding, default is `utf8`.
 

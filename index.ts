@@ -24,7 +24,7 @@ class Manipulator {
   public throwable: boolean
   /**
    * Starts dotenv Manipulator
-   * @param envPath Path to `.env`, default is `__dirname`.
+   * @param envPath Path to `.env`, default is `process.cwd()`.
    * @param throwable If set to `true` functions throw errors whenever there's an incorrect input.
    * @param encoding Specify file encoding, default is `utf8`.
    * @example
@@ -47,7 +47,7 @@ class Manipulator {
    * ```
    */
   constructor(
-    envPath = path.normalize(__dirname),
+    envPath = path.normalize(process.cwd()),
     throwable = false,
     encoding:
       | 'ascii'
