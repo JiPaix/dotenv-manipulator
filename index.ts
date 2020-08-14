@@ -47,7 +47,7 @@ class Manipulator {
    * ```
    */
   constructor(
-    envPath = path.normalize(path.resolve(__dirname, '.env')),
+    envPath = path.normalize(__dirname),
     throwable = false,
     encoding:
       | 'ascii'
@@ -63,7 +63,7 @@ class Manipulator {
   ) {
     this.encoding = encoding
     this.throwable = throwable
-    this.env_path = path.resolve(envPath, '.env')
+    this.env_path = path.join(envPath, '.env')
     if (!fs.existsSync(this.env_path)) {
       fs.closeSync(fs.openSync(this.env_path, 'w'))
     }
