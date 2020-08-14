@@ -1,30 +1,36 @@
 {
   "name": "dotenv-manipulator",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "dotenv-manipulator allows you to add, remove or update both environment variables and .env files on runtime",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "files": [
+    "/dist/**"
+  ],
   "scripts": {
-    "test": "rm -rf ./.env && touch ./.env && mocha test/mocha.js",
-    "docs": "node_modules/.bin/jsdoc index.js -t node_modules/minami -d ./docs"
+    "doc": "node ./node_modules/rimraf/bin.js doc/** && node ./node_modules/typedoc/bin/typedoc && node intellisense.js",
+    "build": "node ./node_modules/rimraf/bin.js dist/** && node ./node_modules/typescript/bin/tsc",
+    "test": "node ./node_modules/mocha/bin/mocha -r ts-node/register tests/mocha.ts",
+    "prepublishOnly": "npm run build && npm run test && node intellisense.js"
   },
   "author": "JiPai",
-  "license": "GPL-3.0",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "dotenv-expand": "^5.1.0"
-  },
+  "license": "MIT",
   "repository": "github:JiPaix/dotenv-manipulator",
   "devDependencies": {
-    "eslint": "^7.4.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-mocha": "^8.0.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "jsdoc": "^3.6.4",
-    "minami": "^1.2.3",
-    "mocha": "^8.0.1"
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.27",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "chai": "^4.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "mocha": "^8.0.1",
+    "prettier": "2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typedoc": "^0.17.6",
+    "typescript": "^3.9.7"
   },
   "engines": {
     "node": ">=10.0.0",
@@ -36,5 +42,6 @@
     ".env",
     "runtime",
     "process.env"
-  ]
+  ],
+  "dependencies": {}
 }
