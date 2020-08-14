@@ -1,7 +1,7 @@
 {
   "name": "dotenv-manipulator",
   "version": "3.0.0",
-  "description": "dotenv-manipulator allows you to add, remove or update both environment variables and .env files on runtime",
+  "description": "Load, add, update or remove variables from both your .env file and process.env at runtime",
   "main": "./dist/index.js",
   "files": [
     "/dist/**"
@@ -38,7 +38,13 @@
   },
   "keywords": [
     "dotenv",
-    "environment",
+    "dotenv-manipulator",
+    "dotenv-loader",
+    "dotenv-editor",
+    "dotenv-parser",
+    "loader",
+    "editor",
+    "parser",
     ".env",
     "runtime",
     "process.env"
