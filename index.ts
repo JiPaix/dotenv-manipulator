@@ -80,7 +80,7 @@ class Manipulator {
       for (const line of file) {
         if (line !== '') {
           const keyvalue = line.split('=')
-          if ((keyvalue.length = 2)) {
+          if (keyvalue.length === 2) {
             OBJ[keyvalue[0]] = keyvalue[1]
             process.env[keyvalue[0]] = keyvalue[1]
           }
