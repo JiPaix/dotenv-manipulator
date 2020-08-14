@@ -130,7 +130,7 @@ class Manipulator {
    * }
    * ```
    */
-  public add(obj: { [x: string]: string }, force: boolean = false) {
+  public add(obj: { [x: string]: string }, force = false): TypeError | undefined {
     if (Object.prototype.toString.call(obj) !== '[object Object]') {
       const errorMessage = new TypeError(
         `[ADD_ERROR]: object must be [object Object] but received ${Object.prototype.toString.call(obj)}`
@@ -170,8 +170,7 @@ class Manipulator {
    * dotenvM.remove(['REMOTE', 'PORT'])
    * ```
    */
-  public remove(obj: { [x: string]: string } | string | string[]) {
-    let i = 0
+  public remove(obj: { [x: string]: string } | string | string[]): TypeError | undefined {
     if (typeof obj === 'string') {
       delete process.env[obj]
       delete this.env[obj]

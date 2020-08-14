@@ -4,7 +4,7 @@
     <a href="https://snyk.io/test/github/JiPaix/dotenv-manipulator?targetFile=package.json"><img src="https://snyk.io/test/github/JiPaix/dotenv-manipulator/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/JiPaix/dotenv-manipulator?targetFile=package.json" style="max-width:100%;"></a>
     <a href="https://deepscan.io/dashboard#view=project&tid=8945&pid=13382&bid=223483"><img src="https://deepscan.io/api/teams/8945/projects/13382/branches/223483/badge/grade.svg" alt="DeepScan grade"></a>
     <img src='https://img.shields.io/npm/dm/dotenv-manipulator.svg' alt="NPM download count">
-    <a href="https://codeclimate.com/github/JiPaix/dotenv-manipulator/maintainability"><img src='https://api.codeclimate.com/v1/badges/a9b5799c789bfa8d2350/maintainability' alt="Code Climate Maintainability"></a>
+    <a href="https://www.codefactor.io/repository/github/jipaix/dotenv-manipulator"><img src="https://www.codefactor.io/repository/github/jipaix/dotenv-manipulator/badge" alt="CodeFactor" /></a>
     <a href="https://discord.gg/5K7nEvK"><img src="https://img.shields.io/discord/706018150520717403" alt="Discord badge"></a>
   </p>
 </h1>
